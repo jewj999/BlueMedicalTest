@@ -21,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('auth')->as('auth:')->group(
     base_path('routes/resources/auth.php')
 );
+
+Route::as('vehicle-types:')->group(
+    base_path('routes/resources/vehicle-types.php')
+);

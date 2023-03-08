@@ -25,3 +25,7 @@ Route::prefix('auth')->as('auth:')->group(
 Route::as('vehicle-types:')->group(
     base_path('routes/resources/vehicle-types.php')
 );
+
+Route::as('vehicles:')->group(
+    base_path('routes/resources/vehicles.php')
+);

@@ -17,17 +17,20 @@ class VehicleType extends Model
         'description',
         'cut_off_date_action',
         'exit_record_action',
+        'in_report',
         'price_per_minute',
     ];
 
     protected $attributes = [
         'cut_off_date_action' => CutOffDateAction::CALCULATE_TIME,
         'exit_record_action' => ExitRecordAction::ADD_TIME,
+        'in_report' => true,
     ];
 
 
     protected $casts = [
         'price_per_minute' => 'float',
+        'in_report' => 'boolean',
     ];
 
     public function vehicles()

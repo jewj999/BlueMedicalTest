@@ -37,6 +37,7 @@ class VehicleTypeUpdateRequest extends FormRequest
                 'string',
                 new Enum(ExitRecordAction::class)
             ],
+            'in_report' => 'required|boolean',
             'price_per_minute' => 'required|numeric|min:0',
         ];
     }

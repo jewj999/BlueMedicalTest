@@ -20,6 +20,7 @@ class VehicleTypeIndexResource extends JsonResource
             'description' => $this->description,
             'cut_off_date_action' => $this->cut_off_date_action,
             'exit_record_action' => $this->exit_record_action,
+            'in_report' => $this->in_report,
             'price_per_minute' => $this->price_per_minute,
         ];
     }

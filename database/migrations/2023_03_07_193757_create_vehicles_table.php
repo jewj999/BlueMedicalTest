@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('vehicle_type_id')->constrained();
 
-            $table->string('license_plate_number');
+            $table->string('license_plate_number')->unique();
             $table->integer('accumulated_minutes');
 
             $table->timestamps();

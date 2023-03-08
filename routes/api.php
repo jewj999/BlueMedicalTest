@@ -33,3 +33,7 @@ Route::as('vehicles:')->group(
 Route::as('records:')->group(
     base_path('routes/resources/records.php')
 );
+
+Route::as('actions:')->group(
+    base_path('routes/resources/actions.php')
+);

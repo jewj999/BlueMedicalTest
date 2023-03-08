@@ -16,8 +16,8 @@ class VehicleTypeService
         return VehicleType::create([
             'name' => 'Default',
             'description' => 'Default vehicle type',
-            'cut_off_date_action' => \App\Enums\CutOffDateAction::NONE,
-            'exit_record_action' => \App\Enums\ExitRecordAction::CALCULATE_TIME,
+            'cut_off_date_action' => \App\Enums\CutOffDateAction::NONE->value,
+            'exit_record_action' => \App\Enums\ExitRecordAction::CALCULATE_TIME->value,
             'in_report' => false,
             'price_per_minute' => 0.5,
             'default' => true,

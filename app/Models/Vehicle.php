@@ -13,6 +13,7 @@ class Vehicle extends Model
     protected $fillable = [
         'vehicle_type_id',
         'license_plate_number',
+        'accumulated_minutes',
     ];
 
     protected $attributes = [

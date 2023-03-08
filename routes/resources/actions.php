@@ -7,6 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('actions')->group(function () {
         Route::put('init-month', InitMonthController::class);
-        Route::put('resident-payment', ResidentPaymentController::class);
+        Route::get('resident-payment', ResidentPaymentController::class);
     });
 });

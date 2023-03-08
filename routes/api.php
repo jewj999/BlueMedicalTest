@@ -29,3 +29,7 @@ Route::as('vehicle-types:')->group(
 Route::as('vehicles:')->group(
     base_path('routes/resources/vehicles.php')
 );
+
+Route::as('records:')->group(
+    base_path('routes/resources/records.php')
+);

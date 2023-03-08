@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VehicleCreateRequest;
 use App\Http\Requests\VehicleUpdateRequest;
 use App\Http\Resources\VehicleIndexResource;
+use App\Models\Record;
 use App\Models\Vehicle;
+use App\Models\VehicleType;
+use App\Services\RecordService;
+use App\Services\VehicleService;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
@@ -55,5 +59,48 @@ class VehicleController extends Controller
         $vehicle->delete();
 
         return response()->noContent();
+    }
+
+    /**
+     * Set an entry record for the specified resource.
+     */
+    public function entryRecord($licensePlateNumber)
+    {
+        $vehicleService = new VehicleService();
+        $vehicle = $vehicleService->getVehicleByLicensePlateNumber($licensePlateNumber);
+
+        if ($vehicle->records()->pending()->exists()) {
+            return response()->json([
+                'message' => 'There is already an entry record for this vehicle.',
+            ], 422);
+        }
+
+        $vehicle->records()->create([
+            'entry_time' => now(),
+        ]);
+
+        return response()->json([
+            'message' => 'Entry record created successfully.',
+        ]);
+    }
+
+    /**
+     * Set an exit record for the specified resource.
+     */
+    public function exitRecord($licensePlateNumber)
+    {
+        $vehicleService = new VehicleService();
+        $vehicle = $vehicleService->getVehicleByLicensePlateNumber($licensePlateNumber);
+
+        if (!$vehicle->records()->pending()->exists()) {
+            return response()->json([
+                'message' => 'There is no entry record for this vehicle.',
+            ], 422);
+        }
+
+        $recordService = new RecordService();
+        $recordResponse = $recordService->exitVehicle($vehicle);
+
+        return $recordResponse;
     }
 }

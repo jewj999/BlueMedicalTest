@@ -27,4 +27,9 @@ class Vehicle extends Model
     {
         return $this->belongsTo(VehicleType::class);
     }
+
+    public function records()
+    {
+        return $this->hasMany(Record::class);
+    }
 }

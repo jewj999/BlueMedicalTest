@@ -19,6 +19,7 @@ class VehicleType extends Model
         'exit_record_action',
         'in_report',
         'price_per_minute',
+        'default',
     ];
 
     protected $attributes = [
@@ -36,5 +37,10 @@ class VehicleType extends Model
     public function vehicles()
     {
         return $this->hasMany(Vehicle::class);
+    }
+
+    public function scopeDefault()
+    {
+        return $this->where('default', true);
     }
 }

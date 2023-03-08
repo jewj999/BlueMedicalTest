@@ -21,6 +21,8 @@ return new class extends Migration
             $table->boolean('in_report')->default(true);
             $table->decimal('price_per_minute', 8, 2);
 
+            $table->boolean('default')->default(false);
+
             $table->timestamps();
             $table->softDeletes();
         });

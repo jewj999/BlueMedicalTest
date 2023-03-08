@@ -17,3 +17,23 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('auth')->as('auth:')->group(
+    base_path('routes/resources/auth.php')
+);
+
+Route::as('vehicle-types:')->group(
+    base_path('routes/resources/vehicle-types.php')
+);
+
+Route::as('vehicles:')->group(
+    base_path('routes/resources/vehicles.php')
+);
+
+Route::as('records:')->group(
+    base_path('routes/resources/records.php')
+);
+
+Route::as('actions:')->group(
+    base_path('routes/resources/actions.php')
+);
